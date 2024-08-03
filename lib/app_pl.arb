@@ -1,0 +1,11 @@
+{
+  "emailEmptyError": "Pole e-mail nie może być puste",
+  "invalidEmailError": "Proszę wprowadzić poprawny adres e-mail",
+  "passwordEmptyError": "Pole hasła nie może być puste",
+  "forgotPasswordText": "Zapomniałeś hasła?",
+  "loginFailedTitle": "Logowanie nieudane",
+  "invalidCredentialsError": "Nieprawidłowy adres e-mail lub hasło",
+  "signInButtonText": "Zaloguj się",
+  "newHereText": "Czy jesteś tutaj nowy?",
+  "createAccountText": "Utwórz konto"
+}

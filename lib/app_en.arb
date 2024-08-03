@@ -1,0 +1,11 @@
+{
+  "emailEmptyError": "Email cannot be empty",
+  "invalidEmailError": "Please enter a valid email address",
+  "passwordEmptyError": "Password cannot be empty",
+  "forgotPasswordText": "Have you forgotten your password?",
+  "loginFailedTitle": "Login failed",
+  "invalidCredentialsError": "Invalid email or password",
+  "signInButtonText": "Sign in",
+  "newHereText": "Are you new here?",
+  "createAccountText": "Create an account"
+}

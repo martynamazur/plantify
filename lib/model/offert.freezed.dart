@@ -263,7 +263,7 @@ class _$OfferImpl implements _Offer {
       @JsonKey(name: 'updated_at') this.updatedAt,
       @JsonKey(name: 'view_count') this.viewCount,
       @JsonKey(name: 'localization') this.localization,
-      @JsonKey(name: 'isFavourite') this.isFavourite = false})
+      @JsonKey(name: 'isFavourite') this.isFavourite = true})
       : _offerImageUrl = offerImageUrl;
 
   factory _$OfferImpl.fromJson(Map<String, dynamic> json) =>

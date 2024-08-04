@@ -36,7 +36,7 @@ class Profile extends ConsumerWidget {
               SizedBox(height: 32),
               _buildSellSection(),
               SizedBox(height: 50),
-              Text(email.asData!.value)
+              //Text(email.asData!.value)
 
             ],
           ),
@@ -77,11 +77,13 @@ class Profile extends ConsumerWidget {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset(
-              'assets/error_icon.jpg',
-              height: 70,
-              width: 70,
-              fit: BoxFit.cover,
+            CircleAvatar(
+              child: Image.asset(
+                'assets/error_icon.jpg',
+                height: 70,
+                width: 70,
+                fit: BoxFit.cover,
+              ),
             ),
             const SizedBox(height: 16.0),
             Text(

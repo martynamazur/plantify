@@ -1,12 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:plants_manager/presentation/screen/favourite.dart';
-import 'package:plants_manager/presentation/screen/profile.dart';
-import 'package:plants_manager/presentation/screen/shop.dart';
-import 'package:plants_manager/presentation/screen/water_schedule.dart';
+import 'package:plants_manager/presentation/profile.dart';
+import 'package:plants_manager/presentation/shop.dart';
+import 'package:plants_manager/presentation/water_schedule.dart';
 
-import '../create_offert.dart';
+
+
+import 'create_offert.dart';
+import 'favourite.dart';
 
 final bottomNavBarIndexProvider = AutoDisposeStateProvider<int>((ref) => 0);
 

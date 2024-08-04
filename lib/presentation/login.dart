@@ -18,9 +18,17 @@ class Login extends ConsumerStatefulWidget {
 }
 
 class LoginState extends ConsumerState<Login> {
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  late final TextEditingController _emailController;
+  late final TextEditingController _passwordController;
   final _formKey = GlobalKey<FormState>();
+  bool obscureText = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _emailController = TextEditingController();
+    _passwordController = TextEditingController();
+  }
 
   @override
   void dispose() {
@@ -31,7 +39,6 @@ class LoginState extends ConsumerState<Login> {
 
   @override
   Widget build(BuildContext context) {
-    final obscureText = ref.watch(obscureTextProvider);
 
     return Scaffold(
       body: SafeArea(
@@ -41,14 +48,25 @@ class LoginState extends ConsumerState<Login> {
             child: Form(
               key: _formKey,
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.asset(
-                    'assets/brand_logo.png',
-                    width: 100,
-                    height: 100,
+                  Row(
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Sign in', style: headlineMedium),
+                          const Text("Hi! Welcome back, you've been missed"),
+                        ],
+                      ),
+                      Image.asset(
+                        'assets/brand_logo.png',
+                        width: 80,
+                        height: 80,
+                        alignment: Alignment.center,
+                      ),
+                    ],
                   ),
-                  Text('Sign in', style: headlineMedium),
-                  const Text("Hi! Welcome back, you've been missed"),
                   const SizedBox(height: 32.0),
                   TextFormField(
                     controller: _emailController,
@@ -80,7 +98,9 @@ class LoginState extends ConsumerState<Login> {
                           obscureText ? Icons.visibility : Icons.visibility_off,
                         ),
                         onPressed: () {
-                          ref.read(obscureTextProvider.notifier).state = !obscureText;
+                          setState(() {
+                            obscureText = !obscureText;
+                          });
                         },
                       ),
                       border: const OutlineInputBorder(),
@@ -91,29 +111,12 @@ class LoginState extends ConsumerState<Login> {
                     onTap: () {
                       Navigator.pushNamed(context, '/resetPassword');
                     },
-                    child: const Text(
-                      'Have you forgotten your password?',
-                    ),
+                    child: Text('Password reset'),
+
                   ),
                   const SizedBox(height: 32.0),
                   ElevatedButton(
-                    onPressed: () async {
-                      if (_formKey.currentState?.validate() == true) {
-                        final response = await ref.read(userRepositoryProvider).signIn(
-                            _emailController.text,
-                            _passwordController.text,
-                            context
-                        );
-                        if (response) {
-                          setUpUserAccountInformationBox();
-                          Navigator.pushReplacementNamed(context, '/myHomePage');
-                        } else {
-                          loginFailedMessage(context);
-                        }
-                      } else {
-                        loginFailedMessage(context);
-                      }
-                    },
+                    onPressed: _signInValidator,
                     style: primaryButtonStyle,
                     child: Text('Sign in', style: primaryTextStyle),
                   ),
@@ -156,5 +159,23 @@ class LoginState extends ConsumerState<Login> {
       backgroundColor: Colors.redAccent,
       flushbarPosition: FlushbarPosition.TOP,
     ).show(context);
+  }
+
+  void _signInValidator() async{
+    if (_formKey.currentState?.validate() == true) {
+      final response = await ref.read(userRepositoryProvider).signIn(
+          _emailController.text,
+          _passwordController.text,
+          context
+      );
+      if (response) {
+        setUpUserAccountInformationBox();
+        Navigator.pushReplacementNamed(context, '/myHomePage');
+      } else {
+        loginFailedMessage(context);
+      }
+    } else {
+      loginFailedMessage(context);
+    }
   }
 }

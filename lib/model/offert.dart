@@ -17,7 +17,7 @@ class Offer with _$Offer {
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
     @JsonKey(name: 'view_count') int? viewCount,
     @JsonKey(name: 'localization') String? localization,
-    @JsonKey(name: 'isFavourite') @Default(false) bool isFavourite
+    @JsonKey(name: 'isFavourite') @Default(true) bool isFavourite
   }) = _Offer;
 
   factory Offer.fromJson(Map<String, dynamic> json) => _$OfferFromJson(json);

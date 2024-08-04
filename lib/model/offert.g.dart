@@ -22,7 +22,7 @@ _$OfferImpl _$$OfferImplFromJson(Map<String, dynamic> json) => _$OfferImpl(
           : DateTime.parse(json['updated_at'] as String),
       viewCount: (json['view_count'] as num?)?.toInt(),
       localization: json['localization'] as String?,
-      isFavourite: json['isFavourite'] as bool? ?? false,
+      isFavourite: json['isFavourite'] as bool? ?? true,
     );
 
 Map<String, dynamic> _$$OfferImplToJson(_$OfferImpl instance) =>

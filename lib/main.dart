@@ -4,18 +4,18 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:plants_manager/presentation/add_new_plant.dart';
 import 'package:plants_manager/presentation/edit_plant.dart';
+import 'package:plants_manager/presentation/favourite.dart';
+import 'package:plants_manager/presentation/login.dart';
+import 'package:plants_manager/presentation/main_screen.dart';
 import 'package:plants_manager/presentation/onboarding.dart';
-import 'package:plants_manager/presentation/screen/account_settings.dart';
-import 'package:plants_manager/presentation/screen/favourite.dart';
-import 'package:plants_manager/presentation/screen/login.dart';
-import 'package:plants_manager/presentation/screen/main_screen.dart';
+import 'package:plants_manager/presentation/account_settings.dart';
 import 'package:plants_manager/presentation/plant_details.dart';
 import 'package:plants_manager/presentation/registration.dart';
 import 'package:plants_manager/presentation/registration_successful.dart';
 import 'package:plants_manager/presentation/reset_password.dart';
-import 'package:plants_manager/presentation/screen/settings.dart';
-import 'package:plants_manager/presentation/screen/splash_screen.dart';
-import 'package:plants_manager/presentation/screen/water_schedule.dart';
+import 'package:plants_manager/presentation/settings.dart';
+import 'package:plants_manager/presentation/splash_screen.dart';
+import 'package:plants_manager/presentation/water_schedule.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'domain/database/category.dart';
 import 'domain/database/user_account_information.dart';
@@ -76,6 +76,7 @@ class MyApp extends StatelessWidget {
         '/accountSettings': (context) => AccountSettings(),
         '/favourite': (context) => Favourite(),
       },
+      debugShowCheckedModeBanner: false,
     );
   }
 }

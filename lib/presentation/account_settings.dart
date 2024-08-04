@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../domain/provider/user_account_information_provider.dart';
-import '../../model/setting.dart';
+import '../domain/provider/user_account_information_provider.dart';
+import '../model/setting.dart';
 
 class AccountSettings extends ConsumerWidget {
   const AccountSettings({super.key});

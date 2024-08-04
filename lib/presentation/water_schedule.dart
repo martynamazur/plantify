@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:plants_manager/domain/provider/plants_provider.dart';
 import 'package:plants_manager/domain/provider/water_plant_schedule_provider.dart';
 import 'package:plants_manager/utils/colors.dart';
+import 'package:plants_manager/utils/empty_list_widget.dart';
 
 import '../../domain/provider/plant_details_provider.dart';
 import 'package:intl/intl.dart';
@@ -233,22 +234,14 @@ class _WaterScheduleState extends ConsumerState<WaterSchedule>
   }
 
   Widget _emptyList(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset('assets/empty_list_icon.png', width: 225, height: 238),
-          const Text('You don\'t own any plants.'),
-          OutlinedButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/addPlant');
-            },
-            child: const Text('Add plant'),
-          ),
-        ],
-      ),
+    return EmptyListWidget(
+        imagePath:'assets/empty_list_icon.png',
+        message:'You don\'t own any plants.',
+        buttonText:'Add plant',
+        buttonRoute:'/addPlant'
     );
   }
+
   Widget _everythingWatered(BuildContext context) {
     return Center(
       child: Column(

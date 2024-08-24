@@ -29,16 +29,26 @@ class _ShopScreenState extends ConsumerState<ShopScreen> {
 
     return Scaffold(
       body: SafeArea(
-          child: CustomScrollView(
-        slivers: [
-          _buildSliverAppBar(),
-          SliverToBoxAdapter(child: SizedBox(height: 12.0)),
-          SliverToBoxAdapter(child: _buildCategorySection()),
-          SliverToBoxAdapter(
-              child: _buildPickedForYouSection(recommendationForYouList)),
-        ],
-      )),
+          child: RefreshIndicator(
+            onRefresh: ()  => _refreshData(),
+            child: CustomScrollView(
+                    slivers: [
+            _buildSliverAppBar(),
+            SliverToBoxAdapter(child: SizedBox(height: 12.0)),
+            SliverToBoxAdapter(child: _buildCategorySection()),
+            SliverToBoxAdapter(
+                child: _buildPickedForYouSection(recommendationForYouList)),
+                    ],
+                  ),
+          )),
     );
+  }
+
+  Future<void> _refreshData() async{
+
+    await ref.refresh(getRecommendationProvider.future);
+    await ref.refresh(recentlyViewedOfferProvider.future);
+    print('refresh');
   }
 
   SliverAppBar _buildSliverAppBar() {
@@ -150,7 +160,9 @@ class _ShopScreenState extends ConsumerState<ShopScreen> {
                   itemBuilder: (context, index) {
                     final offer = offerList[index];
                     return buildOfferCard(
+                        routeName: '/offerDetails',
                         context: context,
+                        offerId: offer.id,
                         offerTitle: offer.offerTitle,
                         price: offer.price,
                         imageUrl: [],
@@ -192,6 +204,8 @@ class _ShopScreenState extends ConsumerState<ShopScreen> {
                 itemBuilder: (BuildContext context, int index) {
                   final offer = data[index];
                   return buildOfferCard(
+                    routeName: '/offerDetails',
+                    offerId: offer.id,
                     context: context,
                     offerTitle: offer.offerTitle,
                     price: offer.price,

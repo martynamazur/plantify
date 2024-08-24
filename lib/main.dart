@@ -7,6 +7,7 @@ import 'package:plants_manager/presentation/edit_plant.dart';
 import 'package:plants_manager/presentation/favourite.dart';
 import 'package:plants_manager/presentation/login.dart';
 import 'package:plants_manager/presentation/main_screen.dart';
+import 'package:plants_manager/presentation/offer_details.dart';
 import 'package:plants_manager/presentation/onboarding.dart';
 import 'package:plants_manager/presentation/account_settings.dart';
 import 'package:plants_manager/presentation/plant_details.dart';
@@ -83,7 +84,8 @@ class MyApp extends StatelessWidget {
         '/settings': (context) => Settings(),
         '/accountSettings': (context) => AccountSettings(),
         '/favourite': (context) => Favourite(),
-        '/searchResults': (context) => SearchResults()
+        '/searchResults': (context) => SearchResults(),
+        '/offerDetails' : (context) => OfferDetails()
       },
       debugShowCheckedModeBanner: false,
     );

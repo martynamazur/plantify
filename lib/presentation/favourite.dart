@@ -50,7 +50,9 @@ class Favourite extends ConsumerWidget {
       itemBuilder: (context, index) {
         final offer = offers[index];
         return buildOfferCard(
+          routeName: '/plantDetails',
           context: context,
+          offerId: offer.id,
           offerTitle: offer.offerTitle,
           price: offer.price,
           imageUrl: offer.offerImageUrl,

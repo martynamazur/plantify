@@ -67,7 +67,7 @@ class UserPlantRepository {
     }
   }
 
-  Future<PlantUser> getPlant(int plantId) async {
+  Future<PlantUser> getPlant(String plantId) async {
     try {
 
       final response = await supabase.from('plantuser').select().eq(

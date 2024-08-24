@@ -7,9 +7,9 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'plant_details_provider.g.dart';
 
-final plantDetailsId = StateProvider<int>((ref) => 0);
+
 
 @riverpod
-Future<PlantUser> getPlant(GetPlantRef ref, int plantDetailsId) async {
+Future<PlantUser> getPlant(GetPlantRef ref, String plantDetailsId) async {
   return ref.watch(userPlantRepositoryProvider).getPlant(plantDetailsId);
 }

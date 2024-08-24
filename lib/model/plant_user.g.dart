@@ -8,7 +8,7 @@ part of 'plant_user.dart';
 
 _$PlantUserImpl _$$PlantUserImplFromJson(Map<String, dynamic> json) =>
     _$PlantUserImpl(
-      id: (json['id'] as num).toInt(),
+      id: json['id'] as String,
       userId: json['user_id'] as String,
       plantTypeId: (json['plant_type_id'] as num).toInt(),
       nickname: json['nickname'] as String,

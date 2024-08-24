@@ -3,16 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 Widget buildOfferCard({
+  required String offerId,
   required BuildContext context,
   required String offerTitle,
   required double price,
   required List<String>? imageUrl,
   required bool isFavourite,
   required VoidCallback onFavouriteToggle,
+  required String routeName
 }) {
   return GestureDetector(
     onTap: () {
-      Navigator.pushReplacementNamed(context,'/plantDetails');
+      Navigator.pushReplacementNamed(context,routeName, arguments: {
+        'plantId': offerId
+      });
     },
     child: Card(
       elevation: 4,

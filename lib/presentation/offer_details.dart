@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:plants_manager/domain/provider/shop_provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../domain/provider/edit_plant_provider.dart';
@@ -8,8 +9,8 @@ import '../model/plant_user.dart';
 import '../utils/colors.dart';
 import '../utils/headline_text.dart';
 
-class PlantDetails extends ConsumerWidget {
-  PlantDetails({Key? key}) : super(key: key);
+class OfferDetails extends ConsumerWidget {
+  OfferDetails({Key? key}) : super(key: key);
 
   final PageController controller = PageController(viewportFraction: 1.0, keepPage: true);
 
@@ -18,7 +19,7 @@ class PlantDetails extends ConsumerWidget {
     final args = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     final plantId = args['plantId'] as String;
 
-    final plantDetails = ref.watch(getPlantProvider(plantId));
+    final plantDetails = ref.watch(getPlantDetailsProvider(plantId));
 
     return Scaffold(
       appBar: AppBar(
@@ -102,20 +103,9 @@ class PlantDetails extends ConsumerWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            data.nickname,
+                            data.offerTitle,
                             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(height: 8.0),
-                          Text(
-                            'Plant Type: ${data.plantTypeId}', // Replace with actual plant type
-                            style: TextStyle(fontSize: 18, color: Colors.grey[700]),
-                          ),
-                          SizedBox(height: 4.0),
-                          Text(
-                            'With me since: ${data.lastDayWatering}', // Replace with actual date
-                            style: TextStyle(fontSize: 16, color: Colors.grey[600]),
-                          ),
-                          SizedBox(height: 22.0),
+                          )
 
 
                         ],
@@ -123,29 +113,6 @@ class PlantDetails extends ConsumerWidget {
                     ),
                   ),
                   SizedBox(height: 20.0),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        _buildInfoContainer(
-                          icon: Icons.water_drop_outlined,
-                          title: 'Water',
-                          value: '1/week',
-                        ),
-                        _buildInfoContainer(
-                          icon: Icons.sunny,
-                          title: 'Light',
-                          value: 'Medium',
-                        ),
-                        _buildInfoContainer(
-                          icon: Icons.thermostat,
-                          title: 'Temperature',
-                          value: '15-24°C',
-                        ),
-                      ],
-                    ),
-                  ),
                 ],
               ),
             ),
@@ -163,33 +130,4 @@ class PlantDetails extends ConsumerWidget {
     );
   }
 
-  Widget _buildInfoContainer({
-    required IconData icon,
-    required String title,
-    required String value,
-  }) {
-    return Container(
-      padding: EdgeInsets.all(12.0),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12.0),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black12,
-            blurRadius: 4.0,
-            offset: Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Column(
-        children: [
-          Icon(icon, size: 24, color: Colors.green),
-          SizedBox(height: 8.0),
-          Text(title, style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
-          SizedBox(height: 4.0),
-          Text(value, style: TextStyle(fontSize: 12, color: Colors.grey[600])),
-        ],
-      ),
-    );
-  }
 }

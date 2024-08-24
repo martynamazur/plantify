@@ -6,7 +6,7 @@ part of 'plant_details_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$getPlantHash() => r'1df296202c49bf10b55a111bf765609464d9e661';
+String _$getPlantHash() => r'977474cf8bf1a321022d0a4c0f0e24aa58d6209f';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -40,7 +40,7 @@ class GetPlantFamily extends Family<AsyncValue<PlantUser>> {
 
   /// See also [getPlant].
   GetPlantProvider call(
-    int plantDetailsId,
+    String plantDetailsId,
   ) {
     return GetPlantProvider(
       plantDetailsId,
@@ -75,7 +75,7 @@ class GetPlantFamily extends Family<AsyncValue<PlantUser>> {
 class GetPlantProvider extends AutoDisposeFutureProvider<PlantUser> {
   /// See also [getPlant].
   GetPlantProvider(
-    int plantDetailsId,
+    String plantDetailsId,
   ) : this._internal(
           (ref) => getPlant(
             ref as GetPlantRef,
@@ -102,7 +102,7 @@ class GetPlantProvider extends AutoDisposeFutureProvider<PlantUser> {
     required this.plantDetailsId,
   }) : super.internal();
 
-  final int plantDetailsId;
+  final String plantDetailsId;
 
   @override
   Override overrideWith(
@@ -143,7 +143,7 @@ class GetPlantProvider extends AutoDisposeFutureProvider<PlantUser> {
 
 mixin GetPlantRef on AutoDisposeFutureProviderRef<PlantUser> {
   /// The parameter `plantDetailsId` of this provider.
-  int get plantDetailsId;
+  String get plantDetailsId;
 }
 
 class _GetPlantProviderElement
@@ -151,7 +151,7 @@ class _GetPlantProviderElement
   _GetPlantProviderElement(super.provider);
 
   @override
-  int get plantDetailsId => (origin as GetPlantProvider).plantDetailsId;
+  String get plantDetailsId => (origin as GetPlantProvider).plantDetailsId;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

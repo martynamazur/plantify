@@ -20,7 +20,7 @@ PlantUser _$PlantUserFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PlantUser {
-  int get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'user_id')
   String get userId => throw _privateConstructorUsedError;
   @JsonKey(name: 'plant_type_id')
@@ -46,7 +46,7 @@ abstract class $PlantUserCopyWith<$Res> {
       _$PlantUserCopyWithImpl<$Res, PlantUser>;
   @useResult
   $Res call(
-      {int id,
+      {String id,
       @JsonKey(name: 'user_id') String userId,
       @JsonKey(name: 'plant_type_id') int plantTypeId,
       @JsonKey(name: 'nickname') String nickname,
@@ -80,7 +80,7 @@ class _$PlantUserCopyWithImpl<$Res, $Val extends PlantUser>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -118,7 +118,7 @@ abstract class _$$PlantUserImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id,
+      {String id,
       @JsonKey(name: 'user_id') String userId,
       @JsonKey(name: 'plant_type_id') int plantTypeId,
       @JsonKey(name: 'nickname') String nickname,
@@ -150,7 +150,7 @@ class __$$PlantUserImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -195,7 +195,7 @@ class _$PlantUserImpl with DiagnosticableTreeMixin implements _PlantUser {
       _$$PlantUserImplFromJson(json);
 
   @override
-  final int id;
+  final String id;
   @override
   @JsonKey(name: 'user_id')
   final String userId;
@@ -274,7 +274,7 @@ class _$PlantUserImpl with DiagnosticableTreeMixin implements _PlantUser {
 
 abstract class _PlantUser implements PlantUser {
   const factory _PlantUser(
-      {required final int id,
+      {required final String id,
       @JsonKey(name: 'user_id') required final String userId,
       @JsonKey(name: 'plant_type_id') required final int plantTypeId,
       @JsonKey(name: 'nickname') required final String nickname,
@@ -288,7 +288,7 @@ abstract class _PlantUser implements PlantUser {
       _$PlantUserImpl.fromJson;
 
   @override
-  int get id;
+  String get id;
   @override
   @JsonKey(name: 'user_id')
   String get userId;

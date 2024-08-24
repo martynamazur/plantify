@@ -16,7 +16,7 @@ class PlantListNotifier extends StateNotifier<List<PlantUser>> {
     state = plants;
   }
 
-  void removePlant(int id) {
+  void removePlant(String id) {
     state = state.where((plant) => plant.id != id).toList();
   }
 }

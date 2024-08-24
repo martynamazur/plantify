@@ -13,6 +13,6 @@ class PlantListShopNotifier extends _$PlantListShopNotifier {
   @override
   Future<List<Offer>> build() async {
     final shopRepository = ref.read(shopRepositoryProvider);
-    return shopRepository.getRecommendationOffers();
+    return shopRepository.getRecommendationOffers(ref);
   }
 }

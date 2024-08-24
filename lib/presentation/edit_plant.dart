@@ -48,7 +48,7 @@ class _EditPlantState extends ConsumerState<EditPlant> {
 
   @override
   Widget build(BuildContext context) {
-    final plantId = ref.watch(plantDetailsId);
+    final plantId = '';
     final plantDetails = ref.watch(getPlantProvider(plantId));
 
     return Scaffold(

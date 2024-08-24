@@ -165,8 +165,7 @@ class _WaterScheduleState extends ConsumerState<WaterSchedule>
                     final plant = data[index];
                     return GestureDetector(
                       onTap: () {
-                        ref.read(plantDetailsId.notifier).state = plant.id;
-                        Navigator.pushNamed(context, '/plantDetails');
+                        Navigator.pushNamed(context, '/plantDetails', arguments: {'plantId': plant.id});
                       },
                       child: Container(
                         margin: const EdgeInsets.symmetric(

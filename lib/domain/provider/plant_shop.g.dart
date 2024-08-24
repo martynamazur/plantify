@@ -7,7 +7,7 @@ part of 'plant_shop.dart';
 // **************************************************************************
 
 String _$plantListShopNotifierHash() =>
-    r'58d13c414d3c7f488f2d94fa7b5b6ee8029710b3';
+    r'bd39181ffb2714679872fe57c480d03ff9e2f8a7';
 
 /// See also [PlantListShopNotifier].
 @ProviderFor(PlantListShopNotifier)

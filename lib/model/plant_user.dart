@@ -7,7 +7,7 @@ part 'plant_user.g.dart';
 @freezed
 class PlantUser with _$PlantUser {
   const factory PlantUser({
-    required int id,
+    required String id,
     @JsonKey(name: 'user_id') required String userId,
     @JsonKey(name: 'plant_type_id') required int plantTypeId,
     @JsonKey(name: 'nickname') required String nickname,

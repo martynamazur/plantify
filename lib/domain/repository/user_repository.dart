@@ -73,6 +73,41 @@ class UserRepository{
     }
   }
 
+  void updateEmailAddress(String newEmail) async{
 
+    try{
+      await supabase.auth.updateUser(UserAttributes(email: newEmail));
+    }catch(e){
+
+    }
+
+  }
+
+  void updatePassword(String newPassword) async{
+
+    try{
+      await supabase.auth.updateUser(UserAttributes(password: newPassword));
+    }catch(e){
+
+    }
+
+  }
+
+  void updateDisplayName(String newDisplayName) async{
+
+    try{
+      await supabase.auth.updateUser(UserAttributes(data: {"display_name" : newDisplayName}));
+    }catch(e){
+
+    }
+
+  }
+
+  void updatePhoneNumber(String newPhoneNumber) async{
+    try{
+      await supabase.auth.updateUser(UserAttributes(phone: newPhoneNumber));
+    }catch(e){
+    }
+  }
 
 }

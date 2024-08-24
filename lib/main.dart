@@ -13,6 +13,7 @@ import 'package:plants_manager/presentation/plant_details.dart';
 import 'package:plants_manager/presentation/registration.dart';
 import 'package:plants_manager/presentation/registration_successful.dart';
 import 'package:plants_manager/presentation/reset_password.dart';
+import 'package:plants_manager/presentation/search_results.dart';
 import 'package:plants_manager/presentation/settings.dart';
 import 'package:plants_manager/presentation/splash_screen.dart';
 import 'package:plants_manager/presentation/water_schedule.dart';
@@ -55,8 +56,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightGreen),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.lightGreen,
+          primary: Colors.lightGreen,
+          secondary: Colors.greenAccent,
+          surface: Color(0xFFFFFFFF),
+          background: Color(0xFFFFFFFF),
+        ),
         useMaterial3: true,
+
       ),
       //darkTheme: ThemeData.dark(),
       //themeMode: darkMode ? ThemeMode.dark : ThemeMode.light,
@@ -75,6 +83,7 @@ class MyApp extends StatelessWidget {
         '/settings': (context) => Settings(),
         '/accountSettings': (context) => AccountSettings(),
         '/favourite': (context) => Favourite(),
+        '/searchResults': (context) => SearchResults()
       },
       debugShowCheckedModeBanner: false,
     );

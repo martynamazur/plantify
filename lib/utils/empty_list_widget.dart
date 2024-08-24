@@ -20,7 +20,7 @@ class EmptyListWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset(imagePath, width: 225, height: 238),
+          Image.asset(imagePath, width: 150, height: 150),
           Text(message),
           OutlinedButton(
             onPressed: () {

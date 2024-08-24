@@ -15,10 +15,10 @@ dependencies:
     sdk: flutter
   flutter_riverpod: ^2.4.5
   freezed_annotation: ^2.4.1
-  json_annotation: ^4.8.1
+  #json_annotation: ^4.8.1
   number_paginator: ^0.4.0
   riverpod_annotation: ^2.3.0
-  equatable: ^2.0.5
+  #equatable: ^2.0.5
   auto_route: ^7.8.4
   get_it: ^7.7.0
 
@@ -97,3 +97,4 @@ flutter:
     - assets/onboarding/onboarding2.png
     - assets/onboarding/onboarding3.png
     - assets/category/test_icon.png
+    - assets/happy_pot.png

@@ -1,4 +1,4 @@
-import 'package:plants_manager/model/offert.dart';
+import 'package:plants_manager/model/offer.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'favourite_provider.dart';

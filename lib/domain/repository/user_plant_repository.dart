@@ -6,11 +6,17 @@ import 'package:plants_manager/model/plant_user.dart';
 
 class UserPlantRepository {
 
+  late final String _userId;
+
+
+  UserPlantRepository(){
+
+    final user = supabase.auth.currentUser;
+    _userId = user!.id;
+  }
+
   Future<void> addNewPlant(PlantUser plantUser) async {
     try {
-      final user = supabase.auth.currentUser;
-      final userId = user!.id;
-
       /*
       final response = await supabase
           .from('plantuser')
@@ -47,13 +53,10 @@ class UserPlantRepository {
 
   Future<List<PlantUser>> getPlants() async {
     try {
-      final user = supabase.auth.currentUser;
-      final userId = user!.id;
-
       final response = await supabase
           .from('plantuser')
           .select()
-          .eq('user_id', userId);
+          .eq('user_id', _userId);
 
       print(response.isNotEmpty);
       print(response.last.values);
@@ -66,11 +69,9 @@ class UserPlantRepository {
 
   Future<PlantUser> getPlant(int plantId) async {
     try {
-      final user = supabase.auth.currentUser;
-      final userId = user!.id;
 
       final response = await supabase.from('plantuser').select().eq(
-          'user_id', userId).eq('id', plantId);
+          'user_id', _userId).eq('id', plantId);
       final plant = response.map((json) => PlantUser.fromJson(json));
       return plant.first;
     } catch (e) {
@@ -102,8 +103,6 @@ class UserPlantRepository {
 
   Future<void> scheduleNewWaterDay(plantId) async {
     try {
-      final user = supabase.auth.currentUser;
-      final userId = user!.id;
 
       DateTime today = DateTime.now();
       DateTime tomorrow = today.add(Duration(days: 1)); //for testing
@@ -111,7 +110,7 @@ class UserPlantRepository {
       await supabase
           .from('plantuser')
           .update({'next_day_watering': tomorrow.toIso8601String()})
-          .eq('user_id', userId)
+          .eq('user_id', _userId)
           .eq('id', plantId);
 
       updateLastWateringDay(plantId);
@@ -122,14 +121,11 @@ class UserPlantRepository {
 
   Future<void> updateLastWateringDay(plantId) async{
     try {
-      final user = supabase.auth.currentUser;
-      final userId = user!.id;
       final today = DateTime.now();
-
       await supabase
           .from('plantuser')
           .update({'last_day_watering': today.toIso8601String()})
-          .eq('user_id', userId)
+          .eq('user_id', _userId)
           .eq('id', plantId);
     } catch(e) {
       print(e);

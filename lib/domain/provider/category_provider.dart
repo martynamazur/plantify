@@ -17,3 +17,4 @@ CategoryRepository categoryRepository(CategoryRepositoryRef ref) {
 Future<List<Category>> getCategories(GetCategoriesRef ref) async {
   return ref.watch(categoryRepositoryProvider).getCategories();
 }
+

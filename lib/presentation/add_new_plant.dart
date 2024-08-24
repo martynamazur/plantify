@@ -1,6 +1,8 @@
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:multi_image_picker_view/multi_image_picker_view.dart';
@@ -36,13 +38,13 @@ class _AddPlantState extends ConsumerState<AddPlant> {
     picker: (bool allowMultiple) async {
       final pickedImages = await ImagePicker().pickMultiImage();
       return pickedImages
-              .map((e) => ImageFile(
-                    UniqueKey().toString(),
-                    name: path.basename(e.path),
-                    extension: path.extension(e.path),
-                    path: e.path,
-                  ))
-              .toList();
+          .map((e) => ImageFile(
+                UniqueKey().toString(),
+                name: path.basename(e.path),
+                extension: path.extension(e.path),
+                path: e.path,
+              ))
+          .toList();
     },
   );
 
@@ -58,7 +60,7 @@ class _AddPlantState extends ConsumerState<AddPlant> {
       });
     } else {
       _saveDataToDatabase();
-      Navigator.pushNamed(context, '/waterSchedule');
+      Navigator.pushNamed(context, '/myHomePage');
     }
   }
 
@@ -91,6 +93,26 @@ class _AddPlantState extends ConsumerState<AddPlant> {
                   onStepContinue: continueStep,
                   onStepCancel: onStepCancel,
                   onStepTapped: onStepTapped,
+                  controlsBuilder:
+                      (BuildContext context, ControlsDetails details) {
+                    return Column(
+                      children: [
+                        const SizedBox(height: 32.0),
+                        Divider(height: 1),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            GestureDetector(
+                                child: Text('Cancel'),
+                                onTap: details.onStepCancel),
+                            GestureDetector(
+                                child: Text('Continue'),
+                                onTap: details.onStepContinue),
+                          ],
+                        ),
+                      ],
+                    );
+                  },
                   steps: [
                     Step(
                         title: const Text(''),
@@ -119,7 +141,7 @@ class _AddPlantState extends ConsumerState<AddPlant> {
                                 leading: const Icon(Icons.search),
                                 hintText: 'Search plant type',
                                 backgroundColor: MaterialStateColor.resolveWith(
-                                    (states) => Colors.grey.shade100),
+                                    (states) => Colors.white),
 
                                 //hintStyle: TextStyle(color: Colors.grey),
                               );
@@ -260,11 +282,8 @@ class _AddPlantState extends ConsumerState<AddPlant> {
       location: 'Living room',
     );
 
-
-
     final addNewPlant = ref.watch(addNewPlantProvider(myPlantUser));
     */
-
   }
 
   _uploadImage() {
@@ -280,10 +299,7 @@ class _AddPlantState extends ConsumerState<AddPlant> {
   void analyseImage(BuildContext context, WidgetRef ref) async {
     final temporaryImgUrl = ref.watch(temporaryImageUrl);
     if (temporaryImgUrl.isNotEmpty && temporaryImgUrl != '') {
-      try {
-
-      } catch (error) {
-
+      try {} catch (error) {
         showDialog(
           context: context,
           builder: (BuildContext context) {
@@ -303,5 +319,5 @@ class _AddPlantState extends ConsumerState<AddPlant> {
         );
       }
     }
-
-}}
+  }
+}

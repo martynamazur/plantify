@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../domain/provider/favourite_notifier.dart';
 import '../../utils/empty_list_widget.dart';
 import '../../utils/offer_card.dart';
-import 'package:plants_manager/model/offert.dart';
+import 'package:plants_manager/model/offer.dart';
 
 import '../../utils/ui_settings.dart';
 
@@ -21,19 +21,15 @@ class Favourite extends ConsumerWidget {
         child: SingleChildScrollView(
           child: Padding(
             padding: uiPadding,
-            child: Column(
-              children: [
-                favouriteState.when(
-                  data: (offers) {
-                    if (offers.isEmpty) {
-                      return _emptyFavouriteList();
-                    }
-                    return _notEmptyFavouriteList(offers, ref);
-                  },
-                  loading: () => const Center(child: CircularProgressIndicator()),
-                  error: (error, stackTrace) => Center(child: Text('Error: $error, $stackTrace')),
-                ),
-              ],
+            child: favouriteState.when(
+              data: (offers) {
+                if (offers.isEmpty) {
+                  return _emptyFavouriteList();
+                }
+                return _notEmptyFavouriteList(offers, ref);
+              },
+              loading: () => const Center(child: CircularProgressIndicator()),
+              error: (error, stackTrace) => Center(child: Text('Error: $error, $stackTrace')),
             ),
           ),
         ),
@@ -70,7 +66,7 @@ class Favourite extends ConsumerWidget {
 
   Widget _emptyFavouriteList() {
     return EmptyListWidget(
-      imagePath: 'assets/empty_list_icon.png',
+      imagePath: 'assets/happy_pot.png',
       message: 'Empty',
       buttonText: 'Find something',
       buttonRoute: '/addPlant',

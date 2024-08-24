@@ -32,10 +32,14 @@ Widget buildOfferCard({
                   Container(
                     height: 300,
                     width: double.infinity,
-                    child: Image.network(
-                      'https://i.pinimg.com/564x/d6/cc/91/d6cc91dc6634942ee7d911b457377129.jpg',
+                    child: imageUrl != null && imageUrl.isNotEmpty
+                        ? Image.network(
+                      imageUrl.first,
                       fit: BoxFit.cover,
                       height: 300,
+                    )
+                        : Center(
+                      child: Text('No Image Available'),
                     ),
                   ),
                   Positioned(
@@ -46,11 +50,12 @@ Widget buildOfferCard({
                       icon: Container(
                             padding: EdgeInsets.all(4),
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: Color(0xFFF5F6F7),
                               borderRadius: BorderRadius.circular(30)
                         ),
                         child: Icon(
                           isFavourite ? Icons.favorite : Icons.favorite_border,
+                          color: isFavourite? Colors.red : Colors.grey,
                         ),
                       ),
                     ),

@@ -37,5 +37,22 @@ final getRecommendationProvider =
 );
 
 typedef GetRecommendationRef = AutoDisposeFutureProviderRef<List<Offer>>;
+String _$recentlyViewedOfferHash() =>
+    r'5472240dc4344ecb35c2b34f99b0057a2e2f796a';
+
+/// See also [recentlyViewedOffer].
+@ProviderFor(recentlyViewedOffer)
+final recentlyViewedOfferProvider =
+    AutoDisposeFutureProvider<List<Offer>>.internal(
+  recentlyViewedOffer,
+  name: r'recentlyViewedOfferProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$recentlyViewedOfferHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef RecentlyViewedOfferRef = AutoDisposeFutureProviderRef<List<Offer>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

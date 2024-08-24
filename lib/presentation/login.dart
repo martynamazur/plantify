@@ -5,9 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:plants_manager/domain/provider/user_provider.dart';
 import 'package:plants_manager/utils/headline_text.dart';
 import 'package:plants_manager/utils/primary_button.dart';
-
 import '../../domain/database/user_account_information.dart';
-import '../../domain/provider/login_provider.dart';
 import '../../utils/input_style.dart';
 
 class Login extends ConsumerStatefulWidget {
@@ -140,6 +138,9 @@ class LoginState extends ConsumerState<Login> {
                       ),
                     ),
                   ),
+                  const SizedBox(height: 32.0),
+                  Divider(height: 1),
+                  //OutlinedButton(onPressed: (){}, child: Text('Continuue with Google'))
                 ],
               ),
             ),
@@ -178,4 +179,6 @@ class LoginState extends ConsumerState<Login> {
       loginFailedMessage(context);
     }
   }
+
+
 }
